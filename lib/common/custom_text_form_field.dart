@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   final IconData icon;
   final String hintText;
   final bool isPassword;
   final TextEditingController controller;
   final FormFieldValidator<String>? validator;
+
   const CustomTextFormField({
     super.key,
     required this.icon,
@@ -16,15 +17,36 @@ class CustomTextFormField extends StatelessWidget {
   });
 
   @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  bool _obscureText = true;
+
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: validator,
-      controller: controller,
-      obscureText: isPassword,
+      controller: widget.controller,
+      validator: widget.validator,
+      obscureText: widget.isPassword ? _obscureText : false,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
-        hint: Text(hintText, style: TextStyle(fontSize: 16)),
-        prefixIcon: Icon(icon, size: 20),
+        hintText: widget.hintText,
+        prefixIcon: Icon(widget.icon),
+
+        // Show eye icon only for password field
+        suffixIcon: widget.isPassword
+            ? IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility_off : Icons.visibility,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
+            : null,
       ),
     );
   }
