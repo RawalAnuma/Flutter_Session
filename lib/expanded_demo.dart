@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_app/brand_page.dart';
 import 'package:my_app/common/custom_text.dart';
 import 'package:my_app/contact_list_page.dart';
+import 'package:my_app/counter_page.dart';
 import 'package:my_app/item_page.dart';
 
 class ExpandedDemo extends StatelessWidget {
@@ -108,6 +109,30 @@ class ExpandedDemo extends StatelessWidget {
               },
               child: Text(
                 "Contact",
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 20,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+
+            SizedBox(height: 15),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CounterPage()),
+                );
+              },
+              // onLongPress: () {
+              //   print("Phone is vibrating");
+              // },
+              // onDoubleTap: () {
+              //   print("User tap this product double");
+              // },
+              child: Text(
+                "Counter",
                 style: TextStyle(
                   color: Colors.green,
                   fontSize: 20,
