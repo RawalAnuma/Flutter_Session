@@ -8,10 +8,17 @@ import 'package:my_app/expanded_demo.dart';
 import 'package:my_app/login_page.dart';
 import 'package:my_app/order_page.dart';
 import 'package:my_app/product_page.dart';
+import 'package:my_app/provider/counter_provider.dart';
+import 'package:provider/provider.dart';
 // import 'package:my_app/profile_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CounterProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,8 +31,9 @@ class MyApp extends StatelessWidget {
     //return MaterialApp(title: "Acme Home Page", home: const AcmeHomePage());
     //return MaterialApp(title: "Contct List Page", home: const ContactListPage(),);
     //return MaterialApp(title: "Brand Page", home: const BrandPage());
+    return MaterialApp(title: "Brand Page", home: const ExpandedDemo());
     //return MaterialApp(title: "Order Page", home: const OrderPage());
     //return MaterialApp(title: "Product Page", home: const ProductPage());
-    return MaterialApp(title: "Login Page", home: LoginPage());
+    //return MaterialApp(title: "Login Page", home: LoginPage());
   }
 }
