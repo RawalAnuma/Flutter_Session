@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/provider/todo_provider.dart';
 import 'package:my_app/screens/brand_page.dart';
 import 'package:my_app/common/custom_text.dart';
 import 'package:my_app/screens/contact_list_page.dart';
 import 'package:my_app/screens/counter_page.dart';
 import 'package:my_app/screens/item_page.dart';
+import 'package:my_app/screens/todo_screen.dart';
 
 class ExpandedDemo extends StatelessWidget {
   const ExpandedDemo({super.key});
@@ -141,6 +143,23 @@ class ExpandedDemo extends StatelessWidget {
               ),
             ),
 
+            SizedBox(height: 15),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TodoScreen()),
+                );
+              },
+              child: Text(
+                "Todo",
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 20,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
           ],
         ),
       ),
