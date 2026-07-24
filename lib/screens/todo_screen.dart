@@ -26,7 +26,7 @@ class _TodoScreenState extends State<TodoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Consumer<TodoProvider>(
-          builder: (, provider, _) {
+          builder: (_, provider, _) {
             return Text(
               "Todos (${provider.completedCount}/${provider.todos.length})",
             );
@@ -98,3 +98,4 @@ class _TodoScreenState extends State<TodoScreen> {
       ),
     );
   }
+}
